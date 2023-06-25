@@ -1,23 +1,22 @@
-function tutorListing() {
-  return <h2>Hi, I am a Car!</h2>;
-}
-
-export default tutorListing;
-
-<div>
+function tutorListing(profileName, profileBio, profilePic, profileSchool) {
+  return <div className="TutorListing">
   <a>
     <div className="tutorPhoto">
-      <img src = "source link in firebase"/>
+      <img src = {profilePic}/>
     </div>
   </a>
   <div class="userInfo">
     <a class="userInfoLink">
       <div class = "info">
-        <div id = "tutorBio"> persons NAME</div>
-        <div id = "school">SCHOOL</div>
-        <div id = "desc">Hi, my name is NAME</div>
+        <div id = "tutorBio"> {profileName}</div>
+        <div id = "school">{profileSchool}</div>
+        <div id = "desc">{profileBio}</div>
       </div>
     </a>
   </div>
 
 </div>
+}
+
+export default tutorListing;
+
