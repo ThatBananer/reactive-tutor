@@ -1,22 +1,22 @@
-function tutorListing(profileName, profileBio, profilePic, profileSchool) {
-  return <div className="TutorListing">
-  <a>
-    <div className="tutorPhoto">
-      <img src = {profilePic}/>
+import React from 'react';
+import styles from '../reactiveTutoring.module.css'
+
+
+function TutorListing({ profileName, profileBio, profilePic, profileSchool }) {
+  return (
+    <div className="grid">
+  <div className={styles.tutorListingBox}>
+    <img src={profilePic} alt="profile pic" className={styles.tutorListingPic} />
+    <div className={styles.tutorListingBio}>
+      <p><b>{profileName}</b></p>
+      <p><b>{profileSchool}</b></p>
+      <p>{profileBio}</p>
     </div>
-  </a>
-  <div class="userInfo">
-    <a class="userInfoLink">
-      <div class = "info">
-        <div id = "tutorBio"> {profileName}</div>
-        <div id = "school">{profileSchool}</div>
-        <div id = "desc">{profileBio}</div>
-      </div>
-    </a>
   </div>
 
 </div>
+
+    );
 }
 
-export default tutorListing;
-
+export default TutorListing;
