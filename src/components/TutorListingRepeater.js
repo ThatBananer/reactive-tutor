@@ -1,5 +1,20 @@
-import TutorListing from './TutorListing'; // This error doesnt seem to be causing real problems
+import TutorListing from './TutorListing.js';
+import styles from '../reactiveTutoring.module.css'
 
-function TutorListingRepeater(nResults, queryResults){
-    const TutorsArray = Array.from({ length: nResults}, (_, index)=> (<TutorListing key={}))
+
+function TutorListingRepeater({queryResults}){
+    return (
+        <div className={styles.grid}>
+          {queryResults.map((tutorUser) => (
+            <TutorListing 
+            profileName={tutorUser.name} 
+            profileBio={tutorUser.bio}
+            profilePic={tutorUser.pic}
+            profileSchool={tutorUser.uni}
+            />
+          ))}
+        </div>
+      );
 }
+
+export default TutorListingRepeater
