@@ -30,4 +30,19 @@
     justify-items: center;
     align-content: start; /* Align grid items to the top of the grid */
   }
+
   
+
+
+
+.horizontalContainer{
+  display: flex;
+}
+
+.horizontalContainerSidebar{
+  flex: 0 0 auto;
+}
+
+.horizontalContainerObject{
+  flex: 1;
+}

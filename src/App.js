@@ -7,17 +7,23 @@ import FakeFireBaseQueryResults from './shittyFirebaseSimulation/DefinetlyFireBa
 import TopBar from './components/TopBar/TopBar';
 import SideBar from './components/SideBar/SideBar';
 
+
+import landingPage from './pages/landingPage/landingPage';
+import loginPage from './pages/loginPage/logInPage';
+import mainPage from './pages/mainPage/mainPage';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 //import FakeFireBaseQueryResults from '../shittyFirebaseSimulation/DefinetlyFireBase';
 
 function App() {
   return (
-    <div className=''>
-      
-      <TopBar></TopBar>
-      <TutorListingRepeater queryResults = {FakeFireBaseQueryResults} />
-      <SideBar></SideBar>
-      
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path='/' Component={landingPage}/>
+        <Route path ='/login' Component={loginPage}/>
+        <Route path = '/main' Component={mainPage}/>
+      </Routes>
+    </Router>
   );
 }
 
