@@ -1,0 +1,18 @@
+/* CSS */
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e76225;
+    padding: 10px;
+  }
+  
+  .logoImg {
+    width: 80px;
+    height: auto;
+  }
+  
+  .profileImg {
+   
+  }
+  
