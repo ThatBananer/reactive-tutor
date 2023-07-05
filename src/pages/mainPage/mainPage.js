@@ -11,18 +11,37 @@ import React, {useState} from 'react';
 
 
 
-function mainPage() {
+function MainPage() {
+
+  const [selectedOption, setSelectedOption] = useState(null);
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
+
+  const renderContent = () => {
+    if (selectedOption === 'findTutors') {
+      return <div><TutorListingRepeater queryResults = {FakeFireBaseQueryResults} /> </div>;
+    } else if (selectedOption === 'option2') {
+      return <div>Option 2 content</div>;
+    } else if (selectedOption === 'option3') {
+      return <div>Option 3 content</div>;
+    }
+    // Add more conditions for other options or a default content
+    return null;
+  };
+
   return (
     <div className={styles.horizontalContainer}>
       <div className={styles.horizontalContainerSidebar}>
-      <SideBar></SideBar>
+      <SideBar onSelect={handleOptionSelect} />
       </div>
       <div className={styles.horizontalContainerObject}>
       <TopBar></TopBar>
-      <TutorListingRepeater queryResults = {FakeFireBaseQueryResults} />
+      {renderContent()}
       </div>
     </div>
   );
 }
 
-export default mainPage;
+export default MainPage;

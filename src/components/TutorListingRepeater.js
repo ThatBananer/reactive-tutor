@@ -18,3 +18,5 @@ function TutorListingRepeater({queryResults}){
 }
 
 export default TutorListingRepeater
+
+//<TutorListingRepeater queryResults = {FakeFireBaseQueryResults} />
