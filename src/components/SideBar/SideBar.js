@@ -20,25 +20,9 @@ function SideBar({ onSelect }) {
           <img src="settings.png" alt="Settings" className={styles.navIcon} />
           <span>Settings</span>
         </li>
-        <li className={styles.navigationLi} onClick={() => handleOptionClick('classes')}>
-          <img src="classes.png" alt="Classes" className={styles.navIcon} />
-          <span>Classes</span>
-        </li>
         <li className={styles.navigationLi} onClick={() => handleOptionClick('about')}>
           <img src="about.png" alt="About Us" className={styles.navIcon} />
           <span>About Us</span>
-        </li>
-        <li className={styles.navigationLi} onClick={() => handleOptionClick('messages')}>
-          <img src="messages.png" alt="Messages" className={styles.navIcon} />
-          <span>Messages</span>
-        </li>
-        <li className={styles.navigationLi} onClick={() => handleOptionClick('my-classes')}>
-          <img src="my-classes.png" alt="My Classes" className={styles.navIcon} />
-          <span>My Classes</span>
-        </li>
-        <li className={styles.navigationLi} onClick={() => handleOptionClick('tutor-profile')}>
-          <img src="tutor-profile.png" alt="My Tutor Profile" className={styles.navIcon} />
-          <span>My Tutor Profile</span>
         </li>
       </ul>
     </div>
