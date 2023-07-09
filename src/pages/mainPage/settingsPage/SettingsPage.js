@@ -29,36 +29,39 @@ function SettingsPage(){
             <div className={styles.formContainer}>
                 <h2>Data Collection Settings</h2>
                 <label>
+                Collect Data
                     <input
                     type="checkbox"
                     checked={collectData}
                     onChange={handleDataCollectionToggle}
                     />
-                    Collect Data
+                    
                 </label>
            
 
            
                 <h2>Location Settings</h2>
                 <label>
+                Enable Location
                     <input
                     type="checkbox"
                     checked={locationEnabled}
                     onChange={handleLocationToggle}
                     />
-                    Enable Location
+                    
                 </label>
            
 
             
                 <h2>Email List Opt-in</h2>
                 <label>
+                  Subscribe to Email List
                     <input
                     type="checkbox"
                     checked={emailListOptIn}
                     onChange={handleEmailListToggle}
                     />
-                    Subscribe to Email List
+                    
                 </label>
             
 

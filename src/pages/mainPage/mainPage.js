@@ -7,7 +7,7 @@ import TopBar from '../../components/TopBar/TopBar';
 import SideBar from '../../components/SideBar/SideBar';
 import SettingsPage from './settingsPage/SettingsPage';
 import AboutPage from './aboutPage/AboutPage';
-
+import ProfilePage from './profilePage/profilePage';
 
 import React, {useState} from 'react';
 
@@ -31,6 +31,9 @@ function MainPage() {
     } else if (selectedOption === 'about') {
       console.log("AboutPage")
       return <div><AboutPage /></div>;
+    } else if (selectedOption === 'profile') {
+      console.log("ProfilePage")
+      return <div><ProfilePage /></div>;
     }
     // Add more conditions for other options or a default content
     return null;
@@ -42,7 +45,7 @@ function MainPage() {
       <SideBar onSelect={handleOptionSelect} />
       </div>
       <div className={styles.horizontalContainerObject}>
-      <TopBar></TopBar>
+      <TopBar onSelect={handleOptionSelect} />
       {renderContent()}
       </div>
     </div>
