@@ -1,9 +1,9 @@
 // Login.js
 
 import React, { useState } from 'react';
-import styles from './loginPage.module.css';
+import styles from './signUpPage.module.css';
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -47,4 +47,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
