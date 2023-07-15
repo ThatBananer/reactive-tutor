@@ -10,6 +10,7 @@ import SideBar from './components/SideBar/SideBar';
 
 import landingPage from './pages/landingPage/landingPage';
 import loginPage from './pages/loginPage/logInPage';
+import Signup from './pages/signUpPage/signUpPage';
 import mainPage from './pages/mainPage/mainPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -21,6 +22,7 @@ function App() {
       <Routes>
         <Route exact path='/' Component={landingPage}/>
         <Route path ='/login' Component={loginPage}/>
+        <Route path ='/signup' Component={Signup}/>
         <Route path = '/main' Component={mainPage}/>
       </Routes>
     </Router>

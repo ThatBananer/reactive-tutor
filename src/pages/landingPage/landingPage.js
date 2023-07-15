@@ -1,5 +1,11 @@
 import React from "react";
 import styles from './landingPage.css'
+import img1 from '../../images/Group2.svg'
+import img2 from '../../images/Group171.svg'
+import img3 from '../../images/Group108.svg'
+import img4 from '../../images/Group115.svg'
+import { Link } from "react-router-dom";
+
 
 function landingPage(){
     return(
@@ -9,7 +15,7 @@ function landingPage(){
           <nav class="navbar navbar-expand-lg pl-3 pl-sm-0" id="navbar">
           <div class="container">
             <div class="navbar-brand-wrapper d-flex w-100">
-              <img src="images/Group2.svg" alt=""/>
+              <img src={img1} alt=""/>
               <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="mdi mdi-menu navbar-toggler-icon"></span>
               </button> 
@@ -18,7 +24,7 @@ function landingPage(){
               <ul class="navbar-nav align-items-lg-center align-items-start ml-auto">
                 <li class="d-flex align-items-center justify-content-between pl-4 pl-lg-0">
                   <div class="navbar-collapse-logo">
-                    <img src="images/Group2.svg" alt=""/>
+                    <img src={img1} alt=""/>
                   </div>
                   <button class="navbar-toggler close-button" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="mdi mdi-close navbar-toggler-icon pl-5"></span>
@@ -32,7 +38,12 @@ function landingPage(){
                 </li>
                 
                 <li class="nav-item btn-contact-us pl-4 pl-lg-0">
-                  <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal">Login / Signup</button>
+                  <Link to="/login">
+                    <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> Login </button>
+                  </Link>
+                  <Link to="/signup">
+                    <button class="btn btn-info" data-toggle="modal" data-target="#exampleModal"> Signup </button>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -47,7 +58,7 @@ function landingPage(){
               <button class="btn btn-opacity-light mr-1">Tutor</button>
               <button class="btn btn-opacity-success ml-1">Be Tutored</button>
             </div>
-            <img src="images/Group171.svg" alt="" class="img-fluid"/>
+            <img src={img2} alt="" class="img-fluid"/>
           </div>
         </div>
         <div class="content-wrapper">
@@ -68,12 +79,12 @@ function landingPage(){
                   </div>    
                 </div>
                 <div class="col-12 col-lg-5 p-0 img-digital grid-margin grid-margin-lg-0" data-aos="fade-left">
-                  <img src="images/Group1.png" alt="" class="img-fluid"/>
+                  <img src={img3} alt="" class="img-fluid"/>
                 </div>
               </div>
               <div class="row align-items-center">
                 <div class="col-12 col-lg-7 text-center flex-item grid-margin" data-aos="fade-right">
-                  <img src="images/Group2.png" alt="" class="img-fluid"/>
+                  <img src={img4} alt="" class="img-fluid"/>
                 </div>
                 <div class="col-12 col-lg-5 flex-item grid-margin" data-aos="fade-left">
                   <h3 class="m-0">For confident students<br/>we can help get you people to tutor!</h3>
