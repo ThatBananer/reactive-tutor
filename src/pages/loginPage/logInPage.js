@@ -22,6 +22,8 @@ const Login = () => {
   };
 
   return (
+    <div>
+    <h1>BLANK LOGO</h1>
     <div className={styles.loginContainer}>
       <form className={styles.loginForm} onSubmit={handleSubmit}>
         <h2>Login</h2>
@@ -43,6 +45,7 @@ const Login = () => {
         <br />
         <button type="submit">Log In</button>
       </form>
+    </div>
     </div>
   );
 };

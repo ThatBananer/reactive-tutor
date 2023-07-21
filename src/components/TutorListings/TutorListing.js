@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../reactiveTutoring.module.css'
+import styles from './tutorListings.module.css'
 
 
 function TutorListing({ profileName, profileBio, profilePic, profileSchool }) {

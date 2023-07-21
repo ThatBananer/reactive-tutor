@@ -1,5 +1,6 @@
 import TutorListing from './TutorListing.js';
-import styles from '../reactiveTutoring.module.css'
+import styles from './tutorListings.module.css'
+
 
 
 function TutorListingRepeater({queryResults}){

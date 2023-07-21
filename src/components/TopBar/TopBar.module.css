@@ -3,16 +3,18 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #e76225;
+    background-color: #2580e7;
     padding: 10px;
+    margin-bottom: 1.5%;
+    border-bottom: 1px solid rgb(139, 139, 139);
   }
   
-  .logoImg {
+.logoImg {
     width: 80px;
     height: auto;
   }
-  
-  .profileImg {
+
+.profileImg {
    
   }
-  
+

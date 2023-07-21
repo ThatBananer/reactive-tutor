@@ -1,6 +1,6 @@
 
 import styles from '../../reactiveTutoring.module.css'
-import TutorListingRepeater from '../../components/TutorListingRepeater';
+import TutorListingRepeater from '../../components/TutorListings/TutorListingRepeater';
 
 import FakeFireBaseQueryResults from '../../shittyFirebaseSimulation/DefinetlyFireBase';
 import TopBar from '../../components/TopBar/TopBar';

@@ -27,7 +27,7 @@ function SettingsPage(){
     return(
         <div className={styles.container}>
             <div className={styles.formContainer}>
-                <h2>Data Collection Settings</h2>
+                <h4>Data Collection Settings</h4>
                 <label>
                 Collect Data
                     <input
@@ -40,7 +40,7 @@ function SettingsPage(){
            
 
            
-                <h2>Location Settings</h2>
+                <h4>Location Settings</h4>
                 <label>
                 Enable Location
                     <input
@@ -53,7 +53,7 @@ function SettingsPage(){
            
 
             
-                <h2>Email List Opt-in</h2>
+                <h4>Email List Opt-in</h4>
                 <label>
                   Subscribe to Email List
                     <input
