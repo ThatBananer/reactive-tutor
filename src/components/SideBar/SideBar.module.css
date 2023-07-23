@@ -32,7 +32,7 @@ h4 {
   align-items: center;
   margin-bottom: 40px;
   position: relative; /* Add relative positioning to each list item */
-  border: 1px;
+  
 }
 
 .navIcon {
