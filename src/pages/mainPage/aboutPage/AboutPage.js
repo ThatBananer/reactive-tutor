@@ -3,6 +3,7 @@ import styles from './aboutPage.module.css'
 
 function AboutPage(){
     return(
+        <div className={styles.overFlow}>
         <div className={styles.container}
         >
             <h4>About us</h4>
@@ -11,6 +12,7 @@ function AboutPage(){
             <h6>Our Mission</h6>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             <p>~BLANK</p>
+        </div>
         </div>
     )
 }

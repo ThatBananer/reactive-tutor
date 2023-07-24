@@ -1,3 +1,7 @@
+.overFlow{
+  overflow-y: auto;
+}
+
 .settings-container {
   max-width: 700px;
   margin: 0 auto;
@@ -46,3 +50,4 @@ textarea {
 .save-button:hover {
   background-color: #0056b3;
 }
+

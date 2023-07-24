@@ -13,6 +13,7 @@ import loginPage from './pages/loginPage/logInPage';
 import Signup from './pages/signUpPage/signUpPage';
 import mainPage from './pages/mainPage/mainPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProfileSetup from './pages/profileSetup/ProfileSetup';
 
 //import FakeFireBaseQueryResults from '../shittyFirebaseSimulation/DefinetlyFireBase';
 
@@ -23,6 +24,7 @@ function App() {
         <Route exact path='/' Component={landingPage}/>
         <Route path ='/login' Component={loginPage}/>
         <Route path ='/signup' Component={Signup}/>
+        <Route path = 'signup/profileSetup' Component={ProfileSetup}/>
         <Route path = '/main' Component={mainPage}/>
       </Routes>
     </Router>

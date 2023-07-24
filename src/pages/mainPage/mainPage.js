@@ -33,7 +33,7 @@ function MainPage() {
       return <div><AboutPage /></div>;
     } else if (selectedOption === 'profile') {
       console.log("ProfilePage")
-      return <div><ProfilePage /></div>;
+      return <div><SettingsPage /></div>;
     }
     // Add more conditions for other options or a default content
     return null;

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './signUpPage.module.css';
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -51,7 +52,9 @@ const Signup = () => {
           required
         />
         <br />
-        <button type="submit">Log In</button>
+        <Link to='./profileSetup'>
+          <button type="submit">Log In</button>
+        </Link>
       </form>
     </div>
     </div>

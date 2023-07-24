@@ -1,3 +1,7 @@
+.overFlow{
+  overflow-y: auto;
+}
+
 
 .tutorListingBox {
     border: 1px solid #ccc;

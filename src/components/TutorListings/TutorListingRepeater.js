@@ -5,6 +5,7 @@ import styles from './tutorListings.module.css'
 
 function TutorListingRepeater({queryResults}){
     return (
+      <div className={styles.overFlow}>
         <div className={styles.grid}>
           {queryResults.map((tutorUser) => (
             <TutorListing 
@@ -15,6 +16,7 @@ function TutorListingRepeater({queryResults}){
             />
           ))}
         </div>
+      </div>
       );
 }
 

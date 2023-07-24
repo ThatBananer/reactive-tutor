@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import './SettingsPage.css'
+import './ProfileSetup.css'
+import { Link } from "react-router-dom";
 
 
 
 
 
 
-const TutorPage = () => {
+const ProfileSetup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -66,6 +67,8 @@ const TutorPage = () => {
   return (
     <div className='overFlow'>
       <div className="settings-container">
+        <h2>BLANK logo</h2>
+      <h2>BLANK Account Creation</h2>
         <h2>Account Information</h2>
         <div className="form-group">
           <label htmlFor="name">Name:</label>
@@ -131,11 +134,12 @@ const TutorPage = () => {
             <input type="checkbox" id="privacy-options" checked={showInfoToOthers} onChange={handleShowInfoToOthersChange} />
           </label>
         </div>
-
-        <button className="save-button" onClick={handleSaveSettings}>Save Settings</button>
+        <Link to =''>
+            <button className="save-button" onClick={handleSaveSettings}>Save and Continue</button>
+        </Link>
       </div>
     </div>    
   );
 };
 
-export default TutorPage;
+export default ProfileSetup;
