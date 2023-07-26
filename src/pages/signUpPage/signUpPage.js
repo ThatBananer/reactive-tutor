@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import styles from './signUpPage.module.css';
 import { Link } from "react-router-dom";
+import { signInWithGoogle } from '../../services/fireBaseServicer';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -55,6 +56,9 @@ const Signup = () => {
         <Link to='./profileSetup'>
           <button type="submit">Log In</button>
         </Link>
+        <div>
+          <button onClick={signInWithGoogle}>Google Sign in</button>
+        </div>
       </form>
     </div>
     </div>
