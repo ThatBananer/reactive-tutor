@@ -39,14 +39,29 @@ h1{
   .loginForm button {
     width: 100%;
     padding: 10px;
-    background-color: #059aad;;
-    color: #fff;
+    background-color: #fdfdfd;;
+    color: #000000;
     border: none;
     border-radius: 3px;
     cursor: pointer;
+    border-color: #000000;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2), 0px 6px 12px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    
   }
   
   .login-form button:hover {
     background-color: #1b18d3;
   }
   
+.googSign{
+  backgroundColor: #ffffff;
+  color: 'white';
+  padding: '10px 16px';
+  borderRadius: '4px';
+  border: 'none';
+  fontWeight: 'bold';
+  cursor: 'pointer';
+  display: 'flex';
+  alignItems: 'center';
+}

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './signUpPage.module.css';
 import { Link } from "react-router-dom";
-import { signInWithGoogle } from '../../services/fireBaseServicer';
+import { signInWithGoogle, emailRegister } from '../../services/fireBaseServicer';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -21,6 +21,7 @@ const Signup = () => {
     e.preventDefault();
     // Perform login logic here, e.g., send data to server
     console.log(`Login submitted: ${email}, ${password}`);
+    emailRegister(email, password);
   };
 
   return (
@@ -53,13 +54,15 @@ const Signup = () => {
           required
         />
         <br />
-        <Link to='./profileSetup'>
-          <button type="submit">Log In</button>
-        </Link>
-        <div>
-          <button onClick={signInWithGoogle}>Google Sign in</button>
-        </div>
+        
+          <button type="submit" onSubmit={handleSubmit}>Signup</button>
+        
+        <hr/>
+        
       </form>
+      <div>
+        <button className ={styles.googSign} onClick={signInWithGoogle}><img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" style={{ marginRight: '10px', width: '20px', height: '20px' }}/> Sign in with Google </button>
+      </div>
     </div>
     </div>
 
