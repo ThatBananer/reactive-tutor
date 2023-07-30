@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, EmailAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth'
-import { getFirestore, collection } from 'firebase/firestore'
+import { getAuth, GoogleAuthProvider, signInWithPopup, onAuthStateChanged, EmailAuthProvider, createUserWithEmailAndPassword, signOut, signInWithEmailAndPassword} from 'firebase/auth'
+import { getFirestore, doc, setDoc } from 'firebase/firestore'
+import { useState } from "react";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -21,8 +22,9 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app)
+export const db = getFirestore(app)
 
- const provider = new GoogleAuthProvider()
+const provider = new GoogleAuthProvider()
 
 
   export const signInWithGoogle = () => {
@@ -45,9 +47,22 @@ export const emailRegister=  async (email, password) => {
 }
 
 export const emailLogin = async () => {
-
+    try {
+        const user = await signInWithEmailAndPassword(auth, email, password)
+        console.log(user)
+    } catch (e){
+        console.log(e)
+    }
+    
 }
 
 export const emaillogOut = async () => {
+    await signOut(auth)
 
 }
+
+const [user, setUser] = useState({});
+
+onAuthStateChanged(auth, (currentUser) =>{
+    setUser
+})

@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import styles from './signUpPage.module.css';
 import { Link } from "react-router-dom";
-import { signInWithGoogle, emailRegister } from '../../services/fireBaseServicer';
+import { signInWithGoogle, emailRegister, emailLogin, auth } from '../../services/fireBaseServicer';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
@@ -22,6 +22,8 @@ const Signup = () => {
     // Perform login logic here, e.g., send data to server
     console.log(`Login submitted: ${email}, ${password}`);
     emailRegister(email, password);
+    emailLogin(email,password)
+    console.log(auth.currentUser)
   };
 
   return (
@@ -48,15 +50,15 @@ const Signup = () => {
 
         <input
           type="password"
-          placeholder="ConfirmPassword"
-          value={password}
+          placeholder="Confirm Password"
+          
           onChange={handlePasswordChange}
           required
         />
         <br />
-        
+        <Link to={"./profileSetup"}>
           <button type="submit" onSubmit={handleSubmit}>Signup</button>
-        
+        </Link>
         <hr/>
         
       </form>
