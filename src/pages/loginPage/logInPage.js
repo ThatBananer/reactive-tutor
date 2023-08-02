@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import styles from './loginPage.module.css';
+import { emailLogin } from '../../services/fireBaseServicer';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -19,6 +20,7 @@ const Login = () => {
     e.preventDefault();
     // Perform login logic here, e.g., send data to server
     console.log(`Login submitted: ${email}, ${password}`);
+    emailLogin(email,  password)
   };
 
   return (

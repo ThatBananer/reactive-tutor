@@ -46,7 +46,7 @@ export const emailRegister=  async (email, password) => {
 }
 }
 
-export const emailLogin = async () => {
+export const emailLogin = async (email, password) => {
     try {
         const user = await signInWithEmailAndPassword(auth, email, password)
         console.log(user)
@@ -61,8 +61,3 @@ export const emaillogOut = async () => {
 
 }
 
-const [user, setUser] = useState({});
-
-onAuthStateChanged(auth, (currentUser) =>{
-    setUser
-})
