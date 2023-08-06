@@ -7,31 +7,37 @@ import FakeFireBaseQueryResults from './shittyFirebaseSimulation/DefinetlyFireBa
 import TopBar from './components/TopBar/TopBar';
 import SideBar from './components/SideBar/SideBar';
 
-import landingPage from './pages/landingPage/landingPage';
-import loginPage from './pages/loginPage/logInPage';
+import LandingPage from './pages/landingPage/landingPage';
+import LoginPage from './pages/loginPage/logInPage';
 import Signup from './pages/signUpPage/signUpPage';
-import mainPage from './pages/mainPage/mainPage';
+import MainPage from './pages/mainPage/mainPage';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import ProfileSetup from './pages/profileSetup/ProfileSetup';
+import { AuthContext } from './context/AuthContext';
+import { useContext } from 'react';
 
 function App() {
-  const currentUser = false;
+  
+  const {currentUser} = useContext(AuthContext)
+
 
   const RequireAuth = ({ children }) => {
     return currentUser ? children : <Navigate to="/signup" />;
   };
 
+  console.log(currentUser)
+
   return (
     <Router>
       <Routes>
-        <Route exact path="/" element={<landingPage />} />
-        <Route path="/login" element={<loginPage />} />
+        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
         <Route
           path="/signup/profileSetup"
           element={<RequireAuth><ProfileSetup /></RequireAuth>}
         />
-        <Route path="/main" element={<RequireAuth><mainPage /></RequireAuth>} />
+        <Route path="/main" element={<RequireAuth><MainPage /></RequireAuth>} />
       </Routes>
     </Router>
   );

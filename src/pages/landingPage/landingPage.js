@@ -7,7 +7,7 @@ import img4 from '../../images/Group115.svg'
 import { Link } from "react-router-dom";
 
 
-function landingPage(){
+function LandingPage(){
     return(
         <div>      
       <body id="body" data-spy="scroll" data-target=".navbar" data-offset="100">
@@ -106,4 +106,4 @@ function landingPage(){
     );
 }
 
-export default landingPage;
+export default LandingPage;
