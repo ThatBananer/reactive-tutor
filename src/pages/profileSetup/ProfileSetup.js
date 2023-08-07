@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './ProfileSetup.css'
 import { Link } from "react-router-dom";
+import { setDoc } from 'firebase/firestore';
+import { db } from '../../services/fireBaseServicer';
 
 
 
@@ -59,9 +61,17 @@ const ProfileSetup = () => {
     setShowInfoToOthers(e.target.checked);
   };
 
-  const handleSaveSettings = () => {
+  const handleSaveSettings = async (e) => {
     // Perform save settings logic here
+    e.preventDafault()
+    await setDoc(doc(db, "cities", "LA"),{
+      name:"LA",
+      state: "CA",
+      country:"USE"
+    })
+
     console.log('Settings saved!');
+
   };
 
   return (
