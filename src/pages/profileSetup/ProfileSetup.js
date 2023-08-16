@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import './ProfileSetup.css'
 import { Link } from "react-router-dom";
-import { setDoc } from 'firebase/firestore';
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../services/fireBaseServicer';
+import { User } from 'firebase/auth';
+import { useContext } from 'react';
+import { AuthContext } from '../../context/AuthContext';
 
 
 
@@ -61,13 +64,21 @@ const ProfileSetup = () => {
     setShowInfoToOthers(e.target.checked);
   };
 
+  const {currentUser} = useContext(AuthContext)
+
   const handleSaveSettings = async (e) => {
     // Perform save settings logic here
-    e.preventDafault()
-    await setDoc(doc(db, "cities", "LA"),{
-      name:"LA",
-      state: "CA",
-      country:"USE"
+    //e.preventDafault()
+    await setDoc(doc(db, "Users", currentUser.uid),{
+      timestamp: serverTimestamp(),
+      name: name,
+      email: email,
+      grade: grade,
+      classTakenList: courseId, //classesTakenListValue
+      phone: phone,
+      contactEmail: contactEmail, //contact email value     
+      bio: bio
+
     })
 
     console.log('Settings saved!');

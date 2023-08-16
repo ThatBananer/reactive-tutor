@@ -22,7 +22,7 @@ function App() {
 
 
   const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/signup" />;
+    return currentUser ? children : <Navigate to="/" />;
   };
 
   console.log(currentUser)
@@ -37,7 +37,7 @@ function App() {
           path="/signup/profileSetup"
           element={<RequireAuth><ProfileSetup /></RequireAuth>}
         />
-        <Route path="/main" element={<RequireAuth><MainPage /></RequireAuth>} />
+        <Route path="/main" element={<MainPage />} />
       </Routes>
     </Router>
   );

@@ -8,6 +8,7 @@ import { signInWithGoogle, emailRegister, emailLogin, auth } from '../../service
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -17,13 +18,24 @@ const Signup = () => {
     setPassword(e.target.value);
   };
 
+  const handleConfirmPasswordChange = (e) => { // Add this function
+    setConfirmPassword(e.target.value);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Perform login logic here, e.g., send data to server
-    console.log(`Login submitted: ${email}, ${password}`);
+
+    // Check if passwords match
+    if (password !== confirmPassword) {
+      console.log("Passwords do not match");
+      return;
+    }
+
+    // Perform signup logic here
+    console.log(`Signup submitted: ${email}, ${password}`);
     emailRegister(email, password);
-    emailLogin(email,password)
-    console.log(auth.currentUser)
+    emailLogin(email, password);
+    console.log(auth.currentUser);
   };
 
   return (
@@ -51,8 +63,8 @@ const Signup = () => {
         <input
           type="password"
           placeholder="Confirm Password"
-          
-          onChange={handlePasswordChange}
+          value={confirmPassword}
+          onChange={handleConfirmPasswordChange}
           required
         />
         <br />
