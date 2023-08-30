@@ -28,9 +28,8 @@ const provider = new GoogleAuthProvider()
 
   export const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then((result) => {
-        console.log(result)
     }).catch((error) => {
-        console.log(error)
+        console.error(error)
     });
 
  }
@@ -39,16 +38,16 @@ const provider = new GoogleAuthProvider()
 export const emailRegister=  async (email, password) => {
     try {
     const user = await createUserWithEmailAndPassword(auth, email, password)
-    console.log(user)
+    
 } catch (e){
-    console.log(e)
+    console.error(e)
 }
 }
 
 export const emailLogin = async (email, password) => {
     try {
         const user = await signInWithEmailAndPassword(auth, email, password)
-        console.log(user)
+        
     } catch (e){
         console.log(e)
     }

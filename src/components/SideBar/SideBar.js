@@ -1,7 +1,23 @@
-import React from "react";
+import React, {useEffect} from 'react';
 import styles from './SideBar.module.css'
+import { auth } from "../../services/fireBaseServicer";
 
 function SideBar({ onSelect }) {
+  
+  const[isLoggedin, setIsLoggedIn] = React.useState(false);
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setIsLoggedIn(true);
+        // User is signed in, you can perform any necessary actions here
+      } else {
+        setIsLoggedIn(false);
+      }
+    })
+    return () => unsubscribe();
+  }, []);
+
+
   const handleOptionClick = (option) => {
     onSelect(option);
   };
@@ -20,12 +36,22 @@ function SideBar({ onSelect }) {
         </li>
         <hr></hr>
 
-        <li className={styles.navigationLi} onClick={() => handleOptionClick('settings')}>
+        {isLoggedin ? (
+          <div>
+            <li className={styles.navigationLi} onClick={() => handleOptionClick('settings')}>
           <img src="settings.png" alt="Settings" className={styles.navIcon} />
-          <span>Settings</span>
+          <span>Profile Setup</span>
           
-        </li>
+            </li>
         <hr></hr>
+          </div>
+          ) : (
+          <div>
+
+          </div>
+        )}
+
+        
 
         <li className={styles.navigationLi} onClick={() => handleOptionClick('about')}>
           <img src="about.png" alt="About Us" className={styles.navIcon} />

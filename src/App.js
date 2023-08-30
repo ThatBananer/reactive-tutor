@@ -1,11 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import styles from './reactiveTutoring.module.css'
-import TutorListingRepeater from './components/TutorListings/TutorListingRepeater';
 
-import FakeFireBaseQueryResults from './shittyFirebaseSimulation/DefinetlyFireBase';
-import TopBar from './components/TopBar/TopBar';
-import SideBar from './components/SideBar/SideBar';
 
 import LandingPage from './pages/landingPage/landingPage';
 import LoginPage from './pages/loginPage/logInPage';
@@ -18,14 +14,17 @@ import { useContext } from 'react';
 
 function App() {
   
+  const RequireAuth = ({ children }) => {
+    return currentUser ? children : <Navigate to="/" />;
+  }
+
+
   const {currentUser} = useContext(AuthContext)
 
 
-  const RequireAuth = ({ children }) => {
-    return currentUser ? children : <Navigate to="/" />;
-  };
 
-  console.log(currentUser)
+
+  
 
   return (
     <Router>
@@ -33,11 +32,8 @@ function App() {
         <Route exact path="/" element={<LandingPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/signup" element={<Signup />} />
-        <Route
-          path="/signup/profileSetup"
-          element={<RequireAuth><ProfileSetup /></RequireAuth>}
-        />
         <Route path="/main" element={<MainPage />} />
+        <Route path="/profileSetup" element={<RequireAuth><ProfileSetup/></RequireAuth>} />
       </Routes>
     </Router>
   );

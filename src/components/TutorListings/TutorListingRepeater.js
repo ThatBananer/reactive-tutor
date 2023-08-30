@@ -1,5 +1,7 @@
+import FakeFireBaseQueryResults from '../../shittyFirebaseSimulation/DefinetlyFireBase.js';
 import TutorListing from './TutorListing.js';
 import styles from './tutorListings.module.css'
+
 
 
 
@@ -20,6 +22,6 @@ function TutorListingRepeater({queryResults}){
       );
 }
 
-export default TutorListingRepeater
+export default TutorListingRepeater;
 
 //<TutorListingRepeater queryResults = {FakeFireBaseQueryResults} />

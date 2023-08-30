@@ -22,7 +22,6 @@ const LoginPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Perform login logic here, e.g., send data to server
-    console.log(`Login submitted: ${email}, ${password}`);
     signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
       const user = userCredential.user;
       dispatch({ type: "LOGIN", payload: user });

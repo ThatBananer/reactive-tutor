@@ -1,14 +1,22 @@
 // Login.js
 
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import styles from './signUpPage.module.css';
-import { Link } from "react-router-dom";
+import { Link, useNavigate} from "react-router-dom";
 import { signInWithGoogle, emailRegister, emailLogin, auth } from '../../services/fireBaseServicer';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { AuthContext } from '../../context/AuthContext';
 
 const Signup = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
+  const { dispatch } = useContext(AuthContext);
+
+  // navigtor to next page in proccess
+  const navigate = useNavigate();
+
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -22,20 +30,29 @@ const Signup = () => {
     setConfirmPassword(e.target.value);
   };
 
-  const handleSubmit = (e) => {
+
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    
+
 
     // Check if passwords match
     if (password !== confirmPassword) {
-      console.log("Passwords do not match");
       return;
     }
 
-    // Perform signup logic here
-    console.log(`Signup submitted: ${email}, ${password}`);
-    emailRegister(email, password);
-    emailLogin(email, password);
-    console.log(auth.currentUser);
+    createUserWithEmailAndPassword(auth, email, password).then(() => {
+      signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+        const user = userCredential.user;
+        dispatch({ type: "LOGIN", payload: user });
+        
+        navigate("/main"); // Use the navigate function to redirect after login
+      });
+      
+      
+    })
   };
 
   return (
@@ -68,15 +85,12 @@ const Signup = () => {
           required
         />
         <br />
-        <Link to={"./profileSetup"}>
-          <button type="submit" onSubmit={handleSubmit}>Signup</button>
-        </Link>
+        
+          <button type="submit" >Signup</button>
+        
         <hr/>
         
       </form>
-      <div>
-        <button className ={styles.googSign} onClick={signInWithGoogle}><img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" style={{ marginRight: '10px', width: '20px', height: '20px' }}/> Sign in with Google </button>
-      </div>
     </div>
     </div>
 

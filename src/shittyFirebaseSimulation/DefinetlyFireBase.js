@@ -7,7 +7,7 @@ class TutorUser {
     }
   }
 
-const user1 = new TutorUser("Jon O'Neil", "I can teach you how to duggie", "https://media.licdn.com/dms/image/C4E03AQHZwG3OSf0sUQ/profile-displayphoto-shrink_200_200/0/1641406156302?e=1693440000&v=beta&t=-Z8TsR1WYPTvwN_lA-9vgOZ_rRehNe9yvTRU7Xfzs5k", "UMB")
+const user1 = new TutorUser("Jon O'Neil", "I can teach you how to duggie", "https://media.licdn.com/dms/image/D4E03AQGWs-lve21PZQ/profile-displayphoto-shrink_200_200/0/1690546110461?e=1697673600&v=beta&t=ye24JjvfrsQmrpql3rAkdWvdTh5YG38xBFzi3lbuQdI", "UMB")
 const user2 = new TutorUser("Jon O'Neil", "I can teach you how to duggie", "https://media.licdn.com/dms/image/C4E03AQHZwG3OSf0sUQ/profile-displayphoto-shrink_200_200/0/1641406156302?e=1693440000&v=beta&t=-Z8TsR1WYPTvwN_lA-9vgOZ_rRehNe9yvTRU7Xfzs5k", "UMB")
 const user3 = new TutorUser("Jon O'Neil", "I can teach you how to duggie", "https://media.licdn.com/dms/image/C4E03AQHZwG3OSf0sUQ/profile-displayphoto-shrink_200_200/0/1641406156302?e=1693440000&v=beta&t=-Z8TsR1WYPTvwN_lA-9vgOZ_rRehNe9yvTRU7Xfzs5k", "UMB")
 const user4 = new TutorUser("Jon O'Neil", "I can teach you how to duggie", "https://media.licdn.com/dms/image/C4E03AQHZwG3OSf0sUQ/profile-displayphoto-shrink_200_200/0/1641406156302?e=1693440000&v=beta&t=-Z8TsR1WYPTvwN_lA-9vgOZ_rRehNe9yvTRU7Xfzs5k", "UMB")

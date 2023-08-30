@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import './ProfileSetup.css'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
-import { db } from '../../services/fireBaseServicer';
+import { auth, db } from '../../services/fireBaseServicer';
 import { User } from 'firebase/auth';
 import { useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
@@ -23,6 +23,10 @@ const ProfileSetup = () => {
   const [phone, setPhone] = useState('');
   const [contactEmail, setContactEmail] = useState('');
   const [showInfoToOthers, setShowInfoToOthers] = useState(false);
+
+  // navigtor to next page in proccess
+  const navigate = useNavigate();
+  const { dispatch } = useContext(AuthContext);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -66,22 +70,33 @@ const ProfileSetup = () => {
 
   const {currentUser} = useContext(AuthContext)
 
+  
+
+  function classTakenListMaker(input) {
+    // Remove any spaces before or after the input string
+    input = input.trim();
+
+    // Split the input string into an array of words using commas as separators
+    const wordsArray = input.split(',').map(word => word.trim());
+
+    return wordsArray;
+}
+
   const handleSaveSettings = async (e) => {
     // Perform save settings logic here
     //e.preventDafault()
-    await setDoc(doc(db, "Users", currentUser.uid),{
-      timestamp: serverTimestamp(),
+    await setDoc(doc(db, "Users", auth.currentUser.uid),{
+      AccountCreated: serverTimestamp(),
       name: name,
       email: email,
       grade: grade,
-      classTakenList: courseId, //classesTakenListValue
+      classTakenList: classTakenListMaker(courseId), //classesTakenListValue
       phone: phone,
       contactEmail: contactEmail, //contact email value     
       bio: bio
 
     })
-
-    console.log('Settings saved!');
+    navigate("/main")
 
   };
 
@@ -99,10 +114,7 @@ const ProfileSetup = () => {
           <label htmlFor="email">Email:</label>
           <input type="email" id="email" value={email} onChange={handleEmailChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
-          <input type="password" id="password" value={password} onChange={handlePasswordChange} />
-        </div>
+        
 
         <h2>Grade</h2>
         <div className="form-group">
@@ -124,15 +136,8 @@ const ProfileSetup = () => {
           <input type="text" id="course-id" value={courseId} onChange={handleCourseIdChange} />
         </div>
 
-        <h2>Are you willing to be listed as a tutor?</h2>
-        <div className="form-group">
-          <label htmlFor="tutor-status">
-          Yes, I want to be listed as a tutor
-            <input type="checkbox" id="tutor-status" checked={isTutor} onChange={handleTutorStatusChange} />
-            
-          </label>
-        </div>
-
+       
+        
         <h2>Bio</h2>
         <div className="form-group">
           <textarea id="bio" value={bio} onChange={handleBioChange}></textarea>
@@ -151,7 +156,7 @@ const ProfileSetup = () => {
         <h2>Privacy Settings</h2>
         <div className="form-group">
           <label htmlFor="privacy-options">
-          Make my information visible to other users
+            By checking this box I acknowledge I understand I  will have my profile displayed on BLANK
             <input type="checkbox" id="privacy-options" checked={showInfoToOthers} onChange={handleShowInfoToOthersChange} />
           </label>
         </div>

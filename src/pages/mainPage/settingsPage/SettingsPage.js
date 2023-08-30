@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
+import { setDoc, doc, serverTimestamp } from 'firebase/firestore';
+import { auth,db } from '../../../services/fireBaseServicer';
 import './SettingsPage.css'
-
-
-
-
-
 
 const TutorPage = () => {
   const [name, setName] = useState('');
@@ -58,9 +55,33 @@ const TutorPage = () => {
     setShowInfoToOthers(e.target.checked);
   };
 
-  const handleSaveSettings = () => {
+  function classTakenListMaker(input) {
+    // Remove any spaces before or after the input string
+    input = input.trim();
+
+    // Split the input string into an array of words using commas as separators
+    const wordsArray = input.split(',').map(word => word.trim());
+
+    return wordsArray;
+}
+
+  const handleSaveSettings = async (e) => {
     // Perform save settings logic here
-    console.log('Settings saved!');
+    //e.preventDafault()
+    await setDoc(doc(db, "Users", auth.currentUser.uid),{
+      LastUpdated: serverTimestamp(),
+      name: name,
+      email: email,
+      grade: grade,
+      classTakenList: classTakenListMaker(courseId), //classesTakenListValue
+      phone: phone,
+      contactEmail: contactEmail, //contact email value     
+      bio: bio,
+      isTutor: showInfoToOthers
+
+    })
+    //TODO add update password if different from current
+
   };
 
   return (
@@ -71,14 +92,11 @@ const TutorPage = () => {
           <label htmlFor="name">Name:</label>
           <input type="text" id="name" value={name} onChange={handleNameChange} />
         </div>
-        <div className="form-group">
-          <label htmlFor="email">Email:</label>
-          <input type="email" id="email" value={email} onChange={handleEmailChange} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password:</label>
+        
+        {/* <div className="form-group">
+          <label htmlFor="password">Change Password:</label>
           <input type="password" id="password" value={password} onChange={handlePasswordChange} />
-        </div>
+        </div> */}
 
         <h2>Grade</h2>
         <div className="form-group">
@@ -88,37 +106,33 @@ const TutorPage = () => {
             <option value="sophomore">Sophomore</option>
             <option value="junior">Junior</option>
             <option value="senior">Senior</option>
-            <option value="senior">Masters Student</option>
-            <option value="senior">Phd Student</option>
+            <option value="Masters Student">Masters Student</option>
+            <option value="Phd Student">Phd Student</option>
+            <option value="Graduated">Graduated</option>
 
           </select>
         </div>
-
+        <hr></hr>
         <h2>List of Classes Taken</h2>
         <div className="form-group">
-          <label htmlFor="course-id">Course ID:</label>
+          <label htmlFor="course-id">Course IDs:</label>
+          <p>Please write in the following format.</p>
+          <p style={{ color: 'red', fontWeight: 'bold', }}>"classID1, classID2, classID3, classID4, ..."</p>
+          <p style={{ fontWeight: 'bold', }} >If it is not written like it is above then your profile will not show up in search</p>
           <input type="text" id="course-id" value={courseId} onChange={handleCourseIdChange} />
         </div>
-
-        <h2>Are you willing to be listed as a tutor?</h2>
-        <div className="form-group">
-          <label htmlFor="tutor-status">
-          Yes, I want to be listed as a tutor
-            <input type="checkbox" id="tutor-status" checked={isTutor} onChange={handleTutorStatusChange} />
-            
-          </label>
-        </div>
+        <hr></hr>
 
         <h2>Bio</h2>
         <div className="form-group">
           <textarea id="bio" value={bio} onChange={handleBioChange}></textarea>
         </div>
 
-        <h2>Contact Information</h2>
+        {/* <h2>Contact Information</h2>
         <div className="form-group">
           <label htmlFor="phone">Phone:</label>
           <input type="tel" id="phone" value={phone} onChange={handlePhoneChange} />
-        </div>
+        </div> */}
         <div className="form-group">
           <label htmlFor="contact-email">Contact Email:</label>
           <input type="email" id="contact-email" value={contactEmail} onChange={handleContactEmailChange} />
@@ -131,6 +145,7 @@ const TutorPage = () => {
             <input type="checkbox" id="privacy-options" checked={showInfoToOthers} onChange={handleShowInfoToOthersChange} />
           </label>
         </div>
+
 
         <button className="save-button" onClick={handleSaveSettings}>Save Settings</button>
       </div>

@@ -16,23 +16,25 @@ import React, {useState} from 'react';
 
 function MainPage() {
 
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState('findTutors');
+  const [queryResults, setQueryResults] = useState(FakeFireBaseQueryResults); 
 
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
   };
 
+  const updateQueryResults = (results) => {
+    setQueryResults(results);
+  };  
+
   const renderContent = () => {
     if (selectedOption === 'findTutors') {
-      return <div><TutorListingRepeater queryResults = {FakeFireBaseQueryResults} /> </div>;
+      return <div><TutorListingRepeater queryResults = {queryResults} /> </div>;
     } else if (selectedOption === 'settings') {
-      console.log("SettingsPage")
       return <div><SettingsPage/></div>;
     } else if (selectedOption === 'about') {
-      console.log("AboutPage")
       return <div><AboutPage /></div>;
     } else if (selectedOption === 'profile') {
-      console.log("ProfilePage")
       return <div><SettingsPage /></div>;
     }
     // Add more conditions for other options or a default content
@@ -45,7 +47,7 @@ function MainPage() {
       <SideBar onSelect={handleOptionSelect} />
       </div>
       <div className={styles.horizontalContainerObject}>
-      <TopBar onSelect={handleOptionSelect} />
+      <TopBar onSelect={handleOptionSelect} updateQueryResults={updateQueryResults}/>
       {renderContent()}
       </div>
     </div>

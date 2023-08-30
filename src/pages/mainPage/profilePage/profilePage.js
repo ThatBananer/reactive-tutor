@@ -16,7 +16,6 @@ function ProfilePage(){
 
   const handleSaveChanges = () => {
     // Perform actions to save the changes
-    console.log("Changes saved!");
   };
     return(
         <div className={styles.container}>

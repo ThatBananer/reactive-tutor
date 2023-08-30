@@ -16,15 +16,11 @@ import { onAuthStateChanged } from "firebase/auth";
 
 function LandingPage() {
 
-  console.log("auth :")
-  console.log(auth)
+  
   const authContext = useContext(AuthContext);
   const { currentUser, dispatch } = authContext;
 
-  console.log("authContext :")
-  console.log(authContext)
-  console.log("currentUser :")
-  console.log(currentUser)
+  
 
   const[isLoggedin, setIsLoggedIn] = React.useState(false);
   
@@ -46,14 +42,9 @@ function LandingPage() {
   const handleLogout = async () => {
     try {
       await auth.signOut();
-      console.log("User has been logged out.");
-      console.log("authContext Logout:")
-      console.log(authContext)
-      //dispatch({ type: "LOGOUT" }); // Dispatch the logout action using the context's dispatch function
+       //dispatch({ type: "LOGOUT" }); // Dispatch the logout action using the context's dispatch function
       
     } catch (error) {
-      console.log("authContext Logout:")
-      console.log(authContext)
       console.error("Error logging out:", error);
     }
     
